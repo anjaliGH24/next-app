@@ -25,7 +25,8 @@ function Card({title, description,price, image, setCartItems, cartItems}) {
                 <h1 className="text-xl mt-2"><span className="text-sm">$</span>{price}</h1>
             </div>
             <div className="w-full px-4 absolute bottom-7 left-1/2 -translate-x-[50%] translate-y-[50%]">
-                <button onClick={()=>handleAdd()} className={`w-full ${add ? 'bg-blue-500 text-white':'bg-yellow-400'}  py-1 text-sm rounded-full`}>{add ? "Go to cart" : "Add to Cart"}</button>             </div>
+                <button onClick={()=>handleAdd()} className={`w-full ${add ? 'bg-red-600 text-white':'bg-yellow-400'}  py-1 text-sm rounded-full`}>{add ? "Remove from cart" : "Add to Cart"}</button>             
+            </div>
         </div>
     )   
 }

@@ -16,10 +16,15 @@ interface NavbarProps {
 } 
 function Navbar({ cartItems }: NavbarProps) { 
     const [Dropdown,setDropdown]=useState(false);
+    const [add,setAdd]=useState(false);
 
     const toggleDropdown = () => {
         setDropdown(!Dropdown);
         console.log(Dropdown);
+    }
+
+    const handleAdd=()=>{
+        setAdd(!add);
     }
     return(
         <div className='w-full px-16 py-6 flex justify-between items-center bg-black '>
@@ -43,17 +48,17 @@ function Navbar({ cartItems }: NavbarProps) {
                 <div className="absolute top-16 right-8 w-64 bg-white rounded-md shadow-lg z-10 p-4 border border-black">
                     {cartItems.length > 0 ? (
                         cartItems.map((item, index) => (
-                            <div key={index} className="flex items-center mb-2">
+                            <div key={index} className="flex items-center pb-5">
                                 <img src={item.image} alt='#' className="w-12 h-12 rounded-md mr-2" />
                                 <div>
                                     <h2 className="font-semibold">{item.title}</h2>
                                     <p className="text-sm text-gray-500">${item.price}</p>
                                 </div>
-                            </div>
+                            </div>  
                         ))
                     ) 
                     : (
-                    <p className="text-center text-gray-500">Cart is empty</p>
+                        <p className="text-center text-gray-500">Cart is empty</p>
                     )}
                 </div>
             )}

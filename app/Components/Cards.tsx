@@ -34,7 +34,9 @@ const Cards = () => {
 
     return (
       <div className='flex flex-col bg-zinc-200 pb-6'>
-        <Navbar cartItems={cartItems}/>
+        <Navbar 
+          cartItems={cartItems}
+        />
         <div className='flex flex-wrap justify-center gap-6 mt-6'>
             {users.map((user) => (
                 <Card
