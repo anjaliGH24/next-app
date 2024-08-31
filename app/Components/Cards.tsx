@@ -2,6 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import Card from './Card';
 import Navbar from './Navbar';
+import Cart from './Cart';
 
 interface User {
   id: number;
@@ -33,24 +34,28 @@ const Cards = () => {
   }, []);
 
     return (
-      <div className='flex flex-col bg-zinc-200 pb-6'>
-        <Navbar 
-          cartItems={cartItems}
-        />
-        <div className='flex flex-wrap justify-center gap-6 mt-6'>
-            {users.map((user) => (
-                <Card
-                    key={user.id}
-                    title={user.title}
-                    description={user.category}
-                    price={user.price}
-                    image={user.image}
-                    setCartItems={setCartItems} 
-                    cartItems={cartItems}
-                />
-                )
-            )}
-        </div>
+      <div className='bg-zinc-200 pb-6'>
+            <Navbar 
+              cartItems={cartItems}
+            />
+
+          <div>
+            
+          </div>  
+          <div className='flex flex-wrap justify-center gap-6 mt-6'>
+              {users.map((user) => (
+                  <Card
+                      key={user.id}
+                      title={user.title}
+                      description={user.category}
+                      price={user.price}
+                      image={user.image}
+                      setCartItems={setCartItems} 
+                      cartItems={cartItems}
+                  />
+                  )
+              )}
+          </div>
       </div>
         
     )
