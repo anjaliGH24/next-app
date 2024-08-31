@@ -13,19 +13,16 @@ interface User {
 
 interface NavbarProps {
     cartItems: User[];
+    handleRemove: (id: number) => void;
 } 
-function Navbar({ cartItems }: NavbarProps) { 
+function Navbar({ cartItems, handleRemove }: NavbarProps) { 
     const [Dropdown,setDropdown]=useState(false);
-    const [add,setAdd]=useState(false);
 
     const toggleDropdown = () => {
         setDropdown(!Dropdown);
         console.log(Dropdown);
     }
 
-    const handleAdd=()=>{
-        setAdd(!add);
-    }
     return(
         <div className='w-full px-16 py-6 flex justify-between items-center bg-black '>
             <div>
@@ -48,17 +45,26 @@ function Navbar({ cartItems }: NavbarProps) {
                 <div className="absolute top-16 right-8 w-64 bg-white rounded-md shadow-lg z-10 p-4 border border-black">
                     {cartItems.length > 0 ? (
                         <>
-                            {cartItems.map((item, index) => (
-                            <div key={index} className="flex items-center pb-5">
-                                <img src={item.image} alt='#' className="w-12 h-12 rounded-md mr-2" />
-                                <div>
-                                    <h2 className="font-semibold">{item.title}</h2>
-                                    <p className="text-sm text-gray-500">${item.price}</p>
+                            {cartItems.map((item) => ( 
+                            <div className='border-b border-gray-300 mb-3'>
+                                <div className="flex items-center pb-3">
+                                    <img src={item.image} alt='#' className="w-12 h-12 rounded-md mr-2" />
+                                    <div>
+                                        <h2 className="font-semibold">{item.title}</h2>
+                                        <p className="text-sm text-gray-500">${item.price}</p>
+                                    </div>
                                 </div>
+                                <button 
+                                onClick={() => {
+                                    console.log(`Button clicked to remove item with id: ${item.id}`);
+                                    handleRemove(item.id);
+                                }} 
+                                className="bg-red-600 px-2 rounded-md text-sm text-white py-1 ml-2 mb-3">Remove</button>
                             </div>  
+                            
                             ))}
 
-                            <div className="border-t border-gray-300 pt-4 mt-4">
+                            <div className=" pt-4 mt-4">
                                 <h3 className="font-semibold">Total Amount:</h3>
                                 <p className="text-lg font-bold">
                                     ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}

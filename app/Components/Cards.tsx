@@ -16,6 +16,11 @@ const Cards = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [cartItems, setCartItems] = useState<User[]>([]);
 
+  const handleRemove = (id:number) =>{
+    console.log('remove',id);
+    setCartItems((prevItems)=>prevItems.filter((item)=>item.id !== id))
+  }
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -37,10 +42,12 @@ const Cards = () => {
       <div className='bg-zinc-200 pb-6'>
             <Navbar 
               cartItems={cartItems}
+              handleRemove={handleRemove}
             />
           <div className='flex flex-wrap justify-center gap-6 mt-6'>
               {users.map((user) => (
                   <Card
+                    id={user.id}
                       key={user.id}
                       title={user.title}
                       description={user.category}
