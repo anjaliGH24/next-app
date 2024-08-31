@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react'
 import Card from './Card';
 import Navbar from './Navbar';
 
-
 interface User {
   id: number;
   title: string;
@@ -36,7 +35,7 @@ const Cards = () => {
     };
 
     fetchUsers();
-  }, []);
+  });
 
     return (
       <div className='bg-zinc-200 pb-6'>

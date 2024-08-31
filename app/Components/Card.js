@@ -9,7 +9,7 @@ function Card({title, description,price, image, id, setCartItems, cartItems}) {
     
         if (!add) {
           setCartItems([...cartItems, {id, title, description, price, image}]);
-          console.log('Added');
+          console.log('Added items in the Cart');
         } else {
           setCartItems(cartItems.filter(item => item.title !== title));
         }

@@ -46,22 +46,21 @@ function Navbar({ cartItems, handleRemove }: NavbarProps) {
                     {cartItems.length > 0 ? (
                         <>
                             {cartItems.map((item) => ( 
-                            <div className='border-b border-gray-300 mb-3'>
-                                <div className="flex items-center pb-3">
-                                    <img src={item.image} alt='#' className="w-12 h-12 rounded-md mr-2" />
-                                    <div>
-                                        <h2 className="font-semibold">{item.title}</h2>
-                                        <p className="text-sm text-gray-500">${item.price}</p>
+                                <div className='border-b border-gray-300 mb-3'>
+                                    <div className="flex items-center pb-3">
+                                        <img src={item.image} alt='#' className="w-12 h-12 rounded-md mr-2" />
+                                        <div>
+                                            <h2 className="font-semibold">{item.title}</h2>
+                                            <p className="text-sm text-gray-500">${item.price}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <button 
-                                onClick={() => {
-                                    console.log(`Button clicked to remove item with id: ${item.id}`);
-                                    handleRemove(item.id);
-                                }} 
-                                className="bg-red-600 px-2 rounded-md text-sm text-white py-1 ml-2 mb-3">Remove</button>
-                            </div>  
-                            
+                                    <button 
+                                    onClick={() => {
+                                        console.log(`Button clicked to remove item with id: ${item.id}`);
+                                        handleRemove(item.id);
+                                    }} 
+                                    className="bg-red-600 px-2 rounded-md text-sm text-white py-1 ml-2 mb-3">Remove</button>
+                                </div>                            
                             ))}
 
                             <div className=" pt-4 mt-4">
@@ -70,8 +69,7 @@ function Navbar({ cartItems, handleRemove }: NavbarProps) {
                                     ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}
                                 </p>
                             </div>
-                        </>
-                        
+                        </>                        
                     ) 
                     : (
                         <p className="text-center text-gray-500">Cart is empty</p>
