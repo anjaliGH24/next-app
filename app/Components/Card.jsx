@@ -29,11 +29,12 @@ function Card({title, description,price, image, id, setCartItems, cartItems}) {
             <div className="h-72 w-60">
                 <img className="w-full h-full px-4" src={image} alt="@" />
             </div>
+
             <div className="px-4 py-3 mt-3 mb-10">
                 <h1 className="font-semibold">{title}</h1>
                 <p className=" text-sm">{description}</p>
                 <h1 className="text-xl mt-2"><span className="text-sm">$</span>{price}</h1>
-            </div>
+            </div> 
             {/* <div className="w-full px-4 absolute bottom-7 left-1/2 -translate-x-[50%] translate-y-[50%]">
                 <button onClick={()=>handleAdd()} className={`w-full ${add ? 'bg-blue-500 text-white':'bg-yellow-400'}  py-1 text-sm rounded-full`}>{add ? "Added" : "Add to Cart"}</button>             
             </div> */}
