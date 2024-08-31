@@ -2,7 +2,7 @@
 import React, {useState, useEffect} from 'react'
 import Card from './Card';
 import Navbar from './Navbar';
-import Cart from './Cart';
+
 
 interface User {
   id: number;
@@ -38,10 +38,6 @@ const Cards = () => {
             <Navbar 
               cartItems={cartItems}
             />
-
-          <div>
-            
-          </div>  
           <div className='flex flex-wrap justify-center gap-6 mt-6'>
               {users.map((user) => (
                   <Card

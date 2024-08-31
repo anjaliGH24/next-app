@@ -47,7 +47,8 @@ function Navbar({ cartItems }: NavbarProps) {
             {Dropdown && (
                 <div className="absolute top-16 right-8 w-64 bg-white rounded-md shadow-lg z-10 p-4 border border-black">
                     {cartItems.length > 0 ? (
-                        cartItems.map((item, index) => (
+                        <>
+                            {cartItems.map((item, index) => (
                             <div key={index} className="flex items-center pb-5">
                                 <img src={item.image} alt='#' className="w-12 h-12 rounded-md mr-2" />
                                 <div>
@@ -55,7 +56,16 @@ function Navbar({ cartItems }: NavbarProps) {
                                     <p className="text-sm text-gray-500">${item.price}</p>
                                 </div>
                             </div>  
-                        ))
+                            ))}
+
+                            <div className="border-t border-gray-300 pt-4 mt-4">
+                                <h3 className="font-semibold">Total Amount:</h3>
+                                <p className="text-lg font-bold">
+                                    ${cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)}
+                                </p>
+                            </div>
+                        </>
+                        
                     ) 
                     : (
                         <p className="text-center text-gray-500">Cart is empty</p>
