@@ -15,11 +15,6 @@ const Cards = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [cartItems, setCartItems] = useState<User[]>([]);
 
-  const handleRemove = (id:number) =>{
-    console.log('remove',id);
-    setCartItems((prevItems)=>prevItems.filter((item)=>item.id !== id))
-  }
-
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -36,6 +31,14 @@ const Cards = () => {
 
     fetchUsers();
   });
+
+  const handleAddtoCart=(user:User) => {
+    setCartItems((prevItems)=>[...prevItems, user]);
+  };
+  const handleRemove = (id:number) =>{
+    console.log('remove',id);
+    setCartItems((prevItems)=>prevItems.filter((item)=>item.id !== id))
+  }
 
     return (
       <div className='bg-zinc-200 pb-6'>
@@ -54,6 +57,8 @@ const Cards = () => {
                       image={user.image}
                       setCartItems={setCartItems} 
                       cartItems={cartItems}
+                      handleAddtoCart={()=>handleAddtoCart(user)}
+                      handleRemove={handleRemove}
                   />
                   )
               )}

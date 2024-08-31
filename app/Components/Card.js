@@ -1,19 +1,19 @@
 'use client';
 import React, { useState } from "react";
 
-function Card({title, description,price, image, id, setCartItems, cartItems}) {
+function Card({title, description,price, image, id, setCartItems, cartItems, handleAddtoCart, handleRemove}) {
     const[add, setAdd]=useState(false);
 
-    const handleAdd = () => {
-        setAdd(!add);
+    // const handleAdd = () => {
+        
+    //     if (!add) {
+    //       setCartItems([...cartItems, {id, title, description, price, image}]);
+    //       console.log('Added items in the Cart');
+    //     } else {
+    //       setCartItems(cartItems.filter(item => item.title !== title));
+    //     }
+    // };
     
-        if (!add) {
-          setCartItems([...cartItems, {id, title, description, price, image}]);
-          console.log('Added items in the Cart');
-        } else {
-          setCartItems(cartItems.filter(item => item.title !== title));
-        }
-    };
     return(
         <div className="w-64 pt-3 shadow-md rounded-md relative border border-zinc-300 bg-zinc-100">
             <div className="h-72 w-60">
